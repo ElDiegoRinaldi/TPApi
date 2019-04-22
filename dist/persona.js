@@ -1,9 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 class Alumno {
-    constructor(nombre, apellido, DNI, idPersona) {
+    constructor(url, nombre, apellido, DNI, idPersona) {
         this.nombre = nombre;
         this.apellido = apellido;
+        this.url = url;
         this.DNI = DNI;
         this.idPersona = idPersona;
         this.listaMaterias = [];

@@ -3,6 +3,7 @@ import { join } from "path";
 import {Alumno} from "./persona";
 
 const listaAlumnos: Alumno[] = [];
+let id: number = 0;
 
 export class AlumnoRoutes {
     public router: Router;
@@ -13,34 +14,20 @@ export class AlumnoRoutes {
     }
 
     public getAll(req: Request, res: Response, next: NextFunction) {
-        const json = [{
-            nombre: "",
-            apellido: "",
-            DNI: ""
-        }];
-        let i: number = 0;
-        for (const item of listaAlumnos) {
-            json[i].nombre = item.nombre;
-            json[i].apellido = item.apellido;
-            json[i].DNI = String(item.DNI);
-            i += 1;
-            console.log(json[i]);
-        }
-        res.send(json);
+        res.send(listaAlumnos);
     }
 
     public createAlumno(req: Request, res: Response) {
         const nombre = req.body.nombre;
         const apellido = req.body.apellido;
+        const url = req.body.url;
         const DNI = req.body.DNI;
-        const id = 0;
 
-        console.log(nombre);
-        console.log(apellido);
-        console.log(DNI);
+        const unAlumno = new Alumno(url, nombre, apellido, DNI, id);
 
-        const unAlumno = new Alumno(nombre, apellido, DNI, id);
         listaAlumnos.push(unAlumno);
+
+        id += 1;
     }
 
     public init() {

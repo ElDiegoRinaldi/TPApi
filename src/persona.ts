@@ -2,14 +2,16 @@ import { Materia } from "./materia";
 
 export class Alumno {
     public nombre: string;
+    public url: string;
     public apellido: string;
     public DNI: number;
     private listaMaterias: Materia[];
     private idPersona: number;
 
-    constructor(nombre: string, apellido: string, DNI: number, idPersona: number) {
+    constructor(url: string, nombre: string, apellido: string, DNI: number, idPersona: number) {
         this.nombre = nombre;
         this.apellido = apellido;
+        this.url = url;
 
         this.DNI = DNI;
         this.idPersona = idPersona;
